@@ -1,0 +1,55 @@
+.studenttable th,
+td {
+    border: 2px solid black;
+}
+
+h1 {
+    margin: 10px 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.studenttablecontainer {
+    margin-top: 10px;
+}
+
+.studenttable {
+    background-color: white;
+    margin-top: 10px;
+}
+
+#deletebutton {
+    margin: 4px;
+    padding: 2px;
+    border: 2px solid black;
+    background-color: rgb(255, 48, 48);
+    font-weight: bold;
+}
+
+#deletebutton:hover {
+    border: 2px double white;
+    background-color: red;
+    color: white;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+#editbutton {
+    margin: 4px;
+    padding: 2px;
+    border: 2px solid black;
+    background-color: yellow;
+    font-weight: bold;
+}
+
+#editbutton:hover {
+    border: 2px double white;
+    background-color: darkgoldenrod;
+    color: white;
+    transform: scale(1.2);
+    cursor: pointer;
+}

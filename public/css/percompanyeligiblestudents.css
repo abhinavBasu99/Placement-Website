@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#divofstudentstable {
+    text-align: center;
+    margin: 10px 0;
+}
+
+#studentstable,
+th,
+td {
+    border: 2px solid black;
+}
+
+#studentstable {
+    margin-top: 10px;
+    background-color: white;
+    text-align: center;
+}

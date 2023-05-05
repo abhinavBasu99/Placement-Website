@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    border: none;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    background-image: url("/images/Placement-Cell-Background-Image.jpg");
+    background-size: cover;
+}
+
+.header {
+    height: 10%;
+}
+
+main {
+    height: 80%;
+}
+
+.footer {
+    height: 10%;
+}
+
+.navbar {
+    height: 100%;
+    background-color: black;
+}
+
+.navbar ul {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar ul li {
+    font-size: large;
+    text-align: center;
+    margin: 30px;
+}
+
+.navigations {
+    color: white;
+}
