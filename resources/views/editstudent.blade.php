@@ -10,11 +10,11 @@
 
 @endpush
 
-{{-- @push('mycss2')
-<link rel="stylesheet" href="{{ url('/css/studentregister.css') }}">
+@push('mycss2')
+<link rel="stylesheet" href="{{ url('/css/editstudent.css') }}">
 
 
-@endpush --}}
+@endpush
 
 @section('main-section')
 
@@ -71,6 +71,8 @@
                         {{$message}}
                         @enderror
                     </span>
+                </div>
+                <div class="rightsideinputs">
                     <label for="tenth_percentage">10th Percentage</label>
                     <input type="text" name="tenth_percentage" id="tenth_percentage" value="{{$student->tenth_percentage}}">
                     <span class="error">
@@ -78,8 +80,6 @@
                         {{$message}}
                         @enderror
                     </span>
-                </div>
-                <div class="rightsideinputs">
                     <label for="twelth_percentage">12th Percentage</label>
                     <input type="text" name="twelth_percentage" id="twelth_percentage" value="{{$student->twelth_percentage}}">
                     <span class="error">

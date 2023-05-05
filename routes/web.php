@@ -49,6 +49,9 @@ Route::post('/downloadresume',[pcontroller::class,'downloadresume']);
 
 Route::get('/percompanyeligiblestudents/{id}',[pcontroller::class,'percompanyeligiblestudents']);
 
+Route::get('/downloadexcel/{id}',[pcontroller::class,'downloadexcel']);
+
+
 
 
 

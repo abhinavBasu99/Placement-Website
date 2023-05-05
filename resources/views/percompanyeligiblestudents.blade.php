@@ -35,6 +35,7 @@
 <main class="container">
     <div id="divofstudentstable">
         <h1>{{$company->name_of_company}}</h1>
+        <div><a href="{{url('/downloadexcel')."/".$company->c_no}}"><button id="downloadexcelbutton">Download as Excel</button></a></div>
         <table id="studentstable">
             <thead>
                 <th>Enrollment No</th>

@@ -6,6 +6,8 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Exports\EligibleStudents;
+use Maatwebsite\Excel\Facades\Excel;
 
 class pcontroller extends Controller{
     public function eligibility($tenthper, $twelthper, $gradper){
@@ -287,6 +289,12 @@ class pcontroller extends Controller{
         $data = compact('company', 'eligiblestudents');
 
         return view('percompanyeligiblestudents')->with($data);
+    }
+
+    public function downloadexcel($id){
+        $company = Companies::find($id);
+
+        return (new EligibleStudents($id))->download($company->name_of_company." Eligible Students.xlsx");
     }
 
 }
