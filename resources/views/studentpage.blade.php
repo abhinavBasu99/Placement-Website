@@ -16,7 +16,11 @@
 @endpush
 
 @section('main-section')
-
+<span id="successmessage">
+    @if (Session::has('success'))
+    {{Session::get('success')}}
+    @endif
+</span>
 <main class="container">
     <div class="studentdetails">
         <img src="/images/profileImage.png" alt="Your Photo" id="yourimage">
@@ -31,13 +35,8 @@
         </ul>
         <a href="{{url('/editstudent')."/".$student->enrollment_no}}"><button id="editbutton">Edit Your Details</button></a>
         <div id="resume">
-            <form action="/downloadresume" method="post" id="downloadresumeform">
-                @csrf
-                <span>Resume:</span>
-                <button id="downloadresumebutton">Download</button>
-                <label for="hiddenid2"></label>
-                <input type="text" name="hiddenid2" class="hidden" id="hiddenid" value={{$student->enrollment_no}}>
-            </form>
+            <span>Resume:</span>
+            <a href="{{url('/downloadresume')."/".$student->enrollment_no}}"><button id="downloadresumebutton">Download</button></a>
             <form action="/uploadresume" method="post" enctype="multipart/form-data" id="uploadresumeform">
                 @csrf
                 <label for="resume">Change Resume:</label>

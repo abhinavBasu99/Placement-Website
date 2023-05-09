@@ -22,6 +22,11 @@
         <form action="/adminlogin" method="post" class="form">
             @csrf
             <h1>Admin Login</h1><br><br>
+            <span id="errormessage">
+                @if (Session::has('failed'))
+                {{Session::get('failed')}}
+                @endif
+            </span>
             <label for="email">Email Id</label><br>
             <input type="email" name="email" id="email"><br><br>
             <label for="password">Password</label><br>

@@ -26,11 +26,11 @@ class pcontroller extends Controller{
         $students = Student::all();
         foreach ($students as $student) {
             if($request->email == $student->email && Hash::check($request->password, $student->password)){
-                return redirect()->route('studentpage', ['id' => $student]);
+                return redirect()->route('studentpage', ['id' => $student])->with('success', 'You have logged in successfully.');
             }
         }
 
-        return redirect('/studentlogin');
+        return redirect('/studentlogin')->with('failed', 'Email Id or Password is Wrong');
     }
 
     public function studentregister(){
@@ -45,11 +45,11 @@ class pcontroller extends Controller{
         $admins = Admin::all();
         foreach ($admins as $admin) {
             if($request->email == $admin->email && Hash::check($request->password, $admin->password)){
-                return redirect('/adminpage');
+                return redirect('/adminpage')->with('success', 'You have logged in successfully.');
             }
         }
 
-        return redirect('/adminlogin');
+        return redirect('/adminlogin')->with('failed', 'Email Id or Password is Wrong');
     }
 
     public function submitstudentregister(Request $request){
@@ -255,11 +255,9 @@ class pcontroller extends Controller{
         return redirect()->route('studentpage', ['id' => $student]);
     }
 
-    public function downloadresume(Request $request){
-        $value = $request->hiddenid2;
-        $student = Student::find($value);
+    public function downloadresume($id){
 
-        $filename = $student->enrollment_no.'resume.pdf';
+        $filename = $id.'resume.pdf';
         $filepath = storage_path('app/public/resumes/'.$filename);
 
         return response()->download($filepath);

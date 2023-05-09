@@ -45,7 +45,7 @@ Route::get('/deletecompany/{id}',[pcontroller::class,'deletecompany']);
 
 Route::post('/uploadresume',[pcontroller::class,'uploadresume']);
 
-Route::post('/downloadresume',[pcontroller::class,'downloadresume']);
+Route::get('/downloadresume/{id}',[pcontroller::class,'downloadresume']);
 
 Route::get('/percompanyeligiblestudents/{id}',[pcontroller::class,'percompanyeligiblestudents']);
 

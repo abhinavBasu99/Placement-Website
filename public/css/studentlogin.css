@@ -58,3 +58,8 @@ button:hover {
     color: black;
     font-size: 18px;
 }
+
+#errormessage {
+    color: red;
+    font-weight: bold;
+}

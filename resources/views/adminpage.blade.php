@@ -31,7 +31,11 @@
 @endpush
 
 @section('main-section')
-
+<span id="successmessage">
+    @if (Session::has('success'))
+    {{Session::get('success')}}
+    @endif
+</span>
 <main>
     <div class="studenttablecontainer">
         <button><select name="sort" id="sort">
@@ -54,6 +58,7 @@
                 <th>Email</th>
                 <th>Contact No</th>
                 <th>Edit / Delete</th>
+                <th>Resume</th>
             </tr>
 
             @foreach ($students as $student)
@@ -66,6 +71,9 @@
                 <td>{{$student->email}}</td>
                 <td>{{$student->contact_no}}</td>
                 <td><a href="{{url('/editstudent')."/".$student->enrollment_no}}"><button id="editbutton">Edit</button></a><a href="{{url('/deletestudent')."/".$student->enrollment_no}}"><button id="deletebutton">Delete</button></a></td>
+                <td>
+                    <a href="{{url('/downloadresume')."/".$student->enrollment_no}}"><button id="downloadresumebutton">Download</button></a>
+                </td>
             </tr>
             @endforeach
         </table>
