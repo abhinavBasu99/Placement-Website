@@ -47,8 +47,10 @@ class EligibleStudents implements FromGenerator,ShouldAutoSize,WithStyles,WithHe
         $eligiblestudents = array();
 
         foreach($students as $student){
-            if($student->tenth_percentage >= $company->tenth_eligibility_percentage && $student->twelth_percentage >= $company->twelth_eligibility_percentage && $student->graduation_percentage >= $company->graduation_eligibility_percentage){
-                array_push($eligiblestudents, $student);
+            foreach($company->courses as $company_course){
+                if($student->course == $company_course->course_name && $student->tenth_percentage >= $company->tenth_eligibility_percentage && $student->twelth_percentage >= $company->twelth_eligibility_percentage && $student->graduation_percentage >= $company->graduation_eligibility_percentage){
+                    array_push($eligiblestudents, $student);
+                }
             }
         }
 
