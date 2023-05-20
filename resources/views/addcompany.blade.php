@@ -89,6 +89,25 @@
                         {{$message}}
                         @enderror
                     </span>
+                    <label for="">Eligible Courses:</label>
+                    <label for="eligiblecourses" id="eligiblecourses">
+                        <div class="courses">
+                            <label for="1">B Tech</label>
+                            <input type="checkbox" name="course[]" id="btech" value="1">
+                            <label for="2">M Tech</label>
+                            <input type="checkbox" name="course[]" id="mtech" value="2">
+                            <label for="3">BCA</label>
+                            <input type="checkbox" name="course[]" id="bca" value="3">
+                        </div>
+                        <div class="courses">
+                            <label for="4">MCA</label>
+                            <input type="checkbox" name="course[]" id="mca" value="4">
+                            <label for="5">BBA</label>
+                            <input type="checkbox" name="course[]" id="bba" value="5">
+                            <label for="6">MBA</label>
+                            <input type="checkbox" name="course[]" id="mba" value="6">
+                        </div>
+                    </label>
                 </div>
             </div>
             <div class="button">

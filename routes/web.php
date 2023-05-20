@@ -51,6 +51,9 @@ Route::get('/percompanyeligiblestudents/{id}',[pcontroller::class,'percompanyeli
 
 Route::get('/downloadexcel/{id}',[pcontroller::class,'downloadexcel']);
 
+Route::get('/example',[pcontroller::class,'example']);
+
+
 
 
 

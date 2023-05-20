@@ -10,7 +10,7 @@
     justify-content: center;
     align-items: center;
     width: 40%;
-    height: 80%;
+    height: 98%;
     background-color: lightsteelblue;
     border: 20px ridge steelblue;
     box-shadow: 20px 20px 30px;
@@ -30,7 +30,7 @@
     width: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -96,4 +96,13 @@ button:hover {
     border: 1px solid black;
     border-radius: 15px;
     transform: scale(1.2);
+}
+
+#eligiblecourses {
+    display: flex;
+    flex-direction: column;
+}
+
+.courses {
+    display: flex;
 }

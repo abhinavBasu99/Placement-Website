@@ -15,6 +15,11 @@
 
 @endpush
 
+@push('javascript')
+<script src="{{url('/js/studentpage.js')}}"></script>
+
+@endpush
+
 @section('main-section')
 <span id="successmessage">
     @if (Session::has('success'))
@@ -54,21 +59,17 @@
                 <th>Name Of Company</th>
                 <th>Website</th>
                 <th>Package (in lacks)</th>
-                <th>Eligibility</th>
                 <th>Apply / Reject</th>
             </tr>
-            @foreach ($companies as $company)
+            @foreach ($eligiblecompanies as $company)
             <tr>
                 <td>{{$company->c_no}}</td>
                 <td>{{$company->name_of_company}}</td>
                 <td><a href="">{{$company->website}}</a></td>
                 <td>{{$company->package}}</td>
-                <td>@if ($eligiblecompanies[($company->c_no)-1])
-                         Eligible
-                         @else
-                         Not Eligible
-                @endif
-                <td><a href=""><button id="applybutton">Apply</button></a><a href=""><button id="rejectbutton">Reject</button></a></td>
+                <td class="applystatuses" id="{{'applystatus'.$company->c_no}}">
+                    <a href=""><button class="applybuttons" id="{{'applybutton'.$company->c_no}}">Apply</button></a><a href=""><button class="rejectbuttons" id="{{'rejectbutton'.$company->c_no}}">Reject</button></a>
+                </td>
             </tr>
             @endforeach
         </table>

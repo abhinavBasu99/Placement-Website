@@ -10,4 +10,8 @@ class Companies extends Model
     use HasFactory;
     protected $table = 'companies';
     protected $primaryKey = 'c_no';
+
+    public function courses(){
+        return $this->belongsToMany(Courses::class, 'companies_courses', 'company_no', 'course_id');
+    }
 }

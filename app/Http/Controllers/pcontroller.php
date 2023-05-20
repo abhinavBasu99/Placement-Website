@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Models\Companies;
 use App\Models\Admin;
+use App\Models\Courses;
+use App\Models\Companies_Courses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -93,10 +95,15 @@ class pcontroller extends Controller{
 
         $eligiblecompanies = array();
         foreach($companies as $company){
-            $eligibility = ($student->tenth_percentage >= $company->tenth_eligibility_percentage && $student->twelth_percentage >= $company->twelth_eligibility_percentage && $student->graduation_percentage >= $company->graduation_eligibility_percentage);
-            array_push($eligiblecompanies, $eligibility);
+            foreach($company->courses as $company_course){
+                if($student->course == $company_course->course_name && $student->tenth_percentage >= $company->tenth_eligibility_percentage && $student->twelth_percentage >= $company->twelth_eligibility_percentage && $student->graduation_percentage >= $company->graduation_eligibility_percentage){
+                    array_push($eligiblecompanies, $company);
+                }
+            }
         }
-        $data = compact('companies', 'eligiblecompanies', 'student');
+
+
+        $data = compact('eligiblecompanies', 'student');
 
         return view('studentpage')->with($data);
     }
@@ -195,6 +202,7 @@ class pcontroller extends Controller{
                 ]
             );
 
+
             $company = new Companies();
             $company->c_no = $request->c_no;
             $company->name_of_company = $request->name_of_company;
@@ -204,6 +212,10 @@ class pcontroller extends Controller{
             $company->twelth_eligibility_percentage = $request->twelth_eligibility_percentage;
             $company->graduation_eligibility_percentage = $request->graduation_eligibility_percentage;
             $company->save();
+
+            $currentcompany = Companies::find($request->c_no);
+            $courses =  $request->course;
+            $currentcompany->courses()->attach($courses);
 
             return redirect('/allcompanies');
         }
@@ -279,8 +291,10 @@ class pcontroller extends Controller{
         $eligiblestudents = array();
 
         foreach($students as $student){
-            if($student->tenth_percentage >= $company->tenth_eligibility_percentage && $student->twelth_percentage >= $company->twelth_eligibility_percentage && $student->graduation_percentage >= $company->graduation_eligibility_percentage){
-                array_push($eligiblestudents, $student);
+            foreach($company->courses as $company_course){
+                if($student->course == $company_course->course_name && $student->tenth_percentage >= $company->tenth_eligibility_percentage && $student->twelth_percentage >= $company->twelth_eligibility_percentage && $student->graduation_percentage >= $company->graduation_eligibility_percentage){
+                    array_push($eligiblestudents, $student);
+                }
             }
         }
 
@@ -293,6 +307,16 @@ class pcontroller extends Controller{
         $company = Companies::find($id);
 
         return (new EligibleStudents($id))->download($company->name_of_company." Eligible Students.xlsx");
+    }
+
+    public function example(){
+
+        $companies = Companies::all();
+        $courses = Courses::all();
+        $data = compact('companies', 'courses');
+
+        return view('example')->with($data);
+
     }
 
 }
