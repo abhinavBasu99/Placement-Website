@@ -72,7 +72,7 @@ input {
 }
 
 button {
-    width: 30%;
+    width: 50%;
     padding: 5px;
     background-color: black;
     color: white;
@@ -82,12 +82,6 @@ button {
 }
 
 button:hover {
-    width: 30%;
-    padding: 5px;
     background-color: darkslategray;
-    color: white;
-    font-size: large;
-    border: 1px solid black;
-    border-radius: 15px;
     transform: scale(1.2);
 }

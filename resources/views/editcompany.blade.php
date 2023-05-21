@@ -21,14 +21,14 @@
 @endpush
 
 @push('extraheaderlink2')
-<li><a href="/addcompany" class="navigations">Add Company</a></li>
+<li><a href="/admin/addcompany" class="navigations">Add Company</a></li>
 
 @endpush
 
 @section('main-section')
 <main class="container">
     <div class="div-of-form">
-        <form action="{{url('/editcompany')."/".$company->c_no}}" method="post" class="form">
+        <form action="{{url('/admin/editcompany')."/".$company->c_no}}" method="post" class="form">
             @csrf
             <h1>Edit Company Details</h1>
             <div class="inputs">

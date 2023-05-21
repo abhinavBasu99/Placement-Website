@@ -19,7 +19,7 @@
 
 <main class="container">
     <div>
-        <form action="/studentlogin" method="post" class="form">
+        <form action="/student/studentlogin" method="post" class="form">
             @csrf
             <h1>Student Login</h1><br><br>
             <span id="errormessage">@if (Session::has('failed'))
@@ -30,7 +30,7 @@
             <label for="password">Password</label><br>
             <input type="password" name="password" id="password"><br><br>
             <button type="submit">Login</button><br>
-            <a href="/studentregister" class="registerlink">Don't have an account? Register</a>
+            <a href="/student/studentregister" class="registerlink">Don't have an account? Register</a>
         </form>
     </div>
 </main>

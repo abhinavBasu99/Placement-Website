@@ -21,12 +21,12 @@
 @endpush
 
 @push('extraheaderlink2')
-<li><a href="/addcompany" class="navigations">Add Company</a></li>
+<li><a href="/admin/addcompany" class="navigations">Add Company</a></li>
 
 @endpush
 
 @push('extraheaderlink3')
-<li><a href="/allcompanies" class="navigations">Companies</a></li>
+<li><a href="/admin/allcompanies" class="navigations">Companies</a></li>
 
 @endpush
 
@@ -35,7 +35,7 @@
 <main class="container">
     <div id="divofstudentstable">
         <h1>{{$company->name_of_company}}</h1>
-        <div><a href="{{url('/downloadexcel')."/".$company->c_no}}"><button id="downloadexcelbutton">Download as Excel</button></a></div>
+        <div><a href="{{url('/admin/downloadexcel')."/".$company->c_no}}"><button id="downloadexcelbutton">Download as Excel</button></a></div>
         <table id="studentstable">
             <thead>
                 <th>Enrollment No</th>

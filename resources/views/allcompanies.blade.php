@@ -21,17 +21,17 @@
 @endpush
 
 @push('extraheaderlink2')
-<li><a href="/allcompanies" class="navigations">Companies</a></li>
+<li><a href="/admin/allcompanies" class="navigations">Companies</a></li>
 
 @endpush
 
 @push('extraheaderlink3')
-<li><a href="/addcompany" class="navigations">Add Company</a></li>
+<li><a href="/admin/addcompany" class="navigations">Add Company</a></li>
 
 @endpush
 
 @push('extraheaderlink4')
-<li><a href="/addcourse" class="navigations">Add Course</a></li>
+<li><a href="/admin/addcourse" class="navigations">Add Course</a></li>
 
 @endpush
 
@@ -56,13 +56,13 @@
 
                 <tr>
                     <td>{{$company->c_no}}</td>
-                    <td><a href="{{url('/percompanyeligiblestudents')."/".$company->c_no}}">{{$company->name_of_company}}</a></td>
+                    <td><a href="{{url('/admin/percompanyeligiblestudents')."/".$company->c_no}}">{{$company->name_of_company}}</a></td>
                     <td><a href="">{{$company->website}}</a></td>
                     <td>{{$company->package}}</td>
                     <td>{{$company->tenth_eligibility_percentage}}</td>
                     <td>{{$company->twelth_eligibility_percentage}}</td>
                     <td>{{$company->graduation_eligibility_percentage}}</td>
-                    <td><a href="{{url('/editcompany')."/".$company->c_no}}"><button id="editbutton">Edit</button></a><a href="{{url('/deletecompany')."/".$company->c_no}}"><button id="deletebutton">Delete</button></a></td>
+                    <td><a href="{{url('/admin/editcompany')."/".$company->c_no}}"><button id="editbutton">Edit</button></a><a href="{{url('/admin/deletecompany')."/".$company->c_no}}"><button id="deletebutton">Delete</button></a></td>
                 </tr>
                 @endforeach
             </tbody>

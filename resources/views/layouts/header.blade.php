@@ -13,8 +13,8 @@
         <nav class="navbar">
             <ul>
                 <li><a href="/" class="navigations">Home</a></li>
-                <li><a href="/studentlogin" class="navigations">Student<br>Login/Register</a></li>
-                <li><a href="/adminlogin" class="navigations">Admin<br>Login</a></li>
+                <li><a href="/student/studentlogin" class="navigations">Student<br>Login / Register</a></li>
+                <li><a href="/admin/adminlogin" class="navigations">Admin<br>Login / Register</a></li>
                 @stack('extraheaderlink1')
                 @stack('extraheaderlink2')
                 @stack('extraheaderlink3')

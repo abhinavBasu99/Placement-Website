@@ -21,24 +21,24 @@
 @endpush
 
 @push('extraheaderlink2')
-<li><a href="/allcompanies" class="navigations">Companies</a></li>
+<li><a href="/admin/allcompanies" class="navigations">Companies</a></li>
 
 @endpush
 
 @push('extraheaderlink3')
-<li><a href="/addcompany" class="navigations">Add Company</a></li>
+<li><a href="/admin/addcompany" class="navigations">Add Company</a></li>
 
 @endpush
 
 @push('extraheaderlink4')
-<li><a href="/addcourse" class="navigations">Add Course</a></li>
+<li><a href="/admin/addcourse" class="navigations">Add Course</a></li>
 
 @endpush
 
 @section('main-section')
 <main class="container">
     <div class="div-of-form">
-        <form action="/addcompany" method="post" class="form">
+        <form action="/admin/addcompany" method="post" class="form">
             @csrf
             <h1>Add Company</h1>
             <div class="inputs">

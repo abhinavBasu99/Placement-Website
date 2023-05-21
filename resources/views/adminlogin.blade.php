@@ -19,7 +19,7 @@
 
 <main class="container">
     <div>
-        <form action="/adminlogin" method="post" class="form">
+        <form action="/admin/adminlogin" method="post" class="form">
             @csrf
             <h1>Admin Login</h1><br><br>
             <span id="errormessage">
@@ -32,7 +32,7 @@
             <label for="password">Password</label><br>
             <input type="password" name="password" id="password"><br><br>
             <button type="submit">Login</button><br>
-            <a href="/adminregister" class="registerlink">Don't have an account? Register</a>
+            <a href="/admin/adminregister" class="registerlink">Don't have an account? Register</a>
         </form>
     </div>
 </main>

@@ -20,7 +20,7 @@
 
 <main class="container">
     <div class="div-of-form">
-        <form action="/studentregister" method="post" class="form">
+        <form action="/student/studentregister" method="post" class="form">
             @csrf
             <h1>Student Registration</h1>
             <div class="inputs">

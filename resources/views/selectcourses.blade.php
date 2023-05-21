@@ -1,7 +1,7 @@
 @extends('layouts.details')
 
 @push('mytitle')
-<title>Select Eligible Branches</title>
+<title>Select Eligible Courses</title>
 
 @endpush
 
@@ -21,17 +21,17 @@
 @endpush
 
 @push('extraheaderlink2')
-<li><a href="/allcompanies" class="navigations">Companies</a></li>
+<li><a href="/admin/allcompanies" class="navigations">Companies</a></li>
 
 @endpush
 
 @push('extraheaderlink3')
-<li><a href="/addcompany" class="navigations">Add Company</a></li>
+<li><a href="/admin/addcompany" class="navigations">Add Company</a></li>
 
 @endpush
 
 @push('extraheaderlink4')
-<li><a href="/addcourse" class="navigations">Add Course</a></li>
+<li><a href="/admin/addcourse" class="navigations">Add Course</a></li>
 
 @endpush
 
@@ -44,9 +44,9 @@
 
 <main class="container">
     <div class="div-of-form">
-        <form action="/selectcourses" method="post" class="form">
+        <form action="/admin/addcompany/selectcourses" method="post" class="form">
             @csrf
-            <h1>Select Eligible Branches</h1>
+            <h1>Select Eligible Courses</h1>
             <div class="inputs">
                 @for($i = 1; $i <= $numberofeligiblecourses; $i++)
                 <label for="">Select Course {{$i}}</label>

@@ -1,63 +1,71 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\pcontroller;
+use App\Http\Controllers\General_Controller;
+use App\Http\Controllers\Student_Controller;
+use App\Http\Controllers\Admin_Controller;
 
-Route::get('/',[pcontroller::class,'home']);
+// General Routes
 
-Route::get('/studentlogin',[pcontroller::class,'studentlogin']);
+Route::get('/',[General_Controller::class,'home']);
 
-Route::post('/studentlogin',[pcontroller::class,'studentauthentication']);
+Route::get('/downloadresume/{id}',[General_Controller::class,'downloadresume']);
 
-Route::get('/studentregister/',[pcontroller::class,'studentregister']);
+// Student Routes
 
-Route::post('/studentregister',[pcontroller::class,'submitstudentregister']);
+Route::get('/student/studentregister',[Student_Controller::class,'studentregister']);
 
-Route::get('/studentpage',[pcontroller::class,'studentpage'])->name('studentpage');
+Route::post('/student/studentregister',[Student_Controller::class,'submitstudentregister']);
 
-Route::get('/editstudent/{id}',[pcontroller::class,'editstudent']);
+Route::get('/student/studentlogin',[Student_Controller::class,'studentlogin']);
 
-Route::post('/editstudent/{id}',[pcontroller::class,'submiteditstudent']);
+Route::post('/student/studentlogin',[Student_Controller::class,'studentauthentication']);
 
-Route::get('/deletestudent/{id}',[pcontroller::class,'deletestudent']);
+Route::get('/student/studentpage',[Student_Controller::class,'studentpage'])->name('studentpage');
 
-Route::get('/adminregister',[pcontroller::class,'adminregister']);
+Route::get('/student/editstudent/{id}',[Student_Controller::class,'editstudent']);
 
-Route::post('/adminregister',[pcontroller::class,'submitadminregister']);
+Route::post('/student/editstudent/{id}',[Student_Controller::class,'submiteditstudent']);
 
-Route::get('/adminlogin',[pcontroller::class,'adminlogin']);
+Route::get('/student/deletestudent/{id}',[Student_Controller::class,'deletestudent']);
 
-Route::post('/adminlogin',[pcontroller::class,'adminauthentication']);
+Route::post('/student/uploadresume',[Student_Controller::class,'uploadresume']);
 
-Route::get('/adminpage',[pcontroller::class,'adminpage'])->name('adminpage');
+// Admin Routes
 
-Route::get('/allcompanies',[pcontroller::class,'allcompanies']);
+Route::get('/admin/adminregister',[Admin_Controller::class,'adminregister']);
 
-Route::get('/addcompany',[pcontroller::class,'addcompany']);
+Route::post('/admin/adminregister',[Admin_Controller::class,'submitadminregister']);
 
-Route::post('/addcompany',[pcontroller::class,'submitaddcompany']);
+Route::get('/admin/adminlogin',[Admin_Controller::class,'adminlogin']);
 
-Route::get('/editcompany/{id}',[pcontroller::class,'editcompany']);
+Route::post('/admin/adminlogin',[Admin_Controller::class,'adminauthentication']);
 
-Route::post('/editcompany/{id}',[pcontroller::class,'submiteditcompany']);
+Route::get('/admin/adminpage',[Admin_Controller::class,'adminpage'])->name('adminpage');
 
-Route::get('/deletecompany/{id}',[pcontroller::class,'deletecompany']);
+Route::get('/admin/allcompanies',[Admin_Controller::class,'allcompanies']);
 
-Route::post('/uploadresume',[pcontroller::class,'uploadresume']);
+Route::get('/admin/addcompany',[Admin_Controller::class,'addcompany']);
 
-Route::get('/downloadresume/{id}',[pcontroller::class,'downloadresume']);
+Route::post('/admin/addcompany',[Admin_Controller::class,'submitaddcompany']);
 
-Route::get('/percompanyeligiblestudents/{id}',[pcontroller::class,'percompanyeligiblestudents']);
+Route::get('/admin/addcompany/selectcourses',[Admin_Controller::class,'selectcourses']);
 
-Route::get('/downloadexcel/{id}',[pcontroller::class,'downloadexcel']);
+Route::post('/admin/addcompany/selectcourses',[Admin_Controller::class,'submitselectcourses']);
 
-Route::get('/selectcourses',[pcontroller::class,'selectcourses']);
+Route::get('/admin/editcompany/{id}',[Admin_Controller::class,'editcompany']);
 
-Route::post('/selectcourses',[pcontroller::class,'submitselectcourses']);
+Route::post('/admin/editcompany/{id}',[Admin_Controller::class,'submiteditcompany']);
 
-Route::get('/addcourse',[pcontroller::class,'addcourse']);
+Route::get('/admin/deletecompany/{id}',[Admin_Controller::class,'deletecompany']);
 
-Route::post('/addcourse',[pcontroller::class,'submitaddcourse']);
+Route::get('/admin/percompanyeligiblestudents/{id}',[Admin_Controller::class,'percompanyeligiblestudents']);
+
+Route::get('/admin/downloadexcel/{id}',[Admin_Controller::class,'downloadexcel']);
+
+Route::get('/admin/addcourse',[Admin_Controller::class,'addcourse']);
+
+Route::post('/admin/addcourse',[Admin_Controller::class,'submitaddcourse']);
 
 
 

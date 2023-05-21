@@ -38,11 +38,14 @@
             <li>Email Id:- {{$student->email}}</li>
             <li>Contact No.:- {{$student->contact_no}}</li>
         </ul>
-        <a href="{{url('/editstudent')."/".$student->enrollment_no}}"><button id="editbutton">Edit Your Details</button></a>
+        <div class="profileoptions">
+        <a href="{{url('/student/editstudent')."/".$student->enrollment_no}}"><button id="editbutton">Edit Your Details</button></a>
+        <a href="{{url('/student/deletestudent')."/".$student->enrollment_no}}"><button id="deletebutton">Delete Profile</button></a>
+        </div>
         <div id="resume">
             <span>Resume:</span>
             <a href="{{url('/downloadresume')."/".$student->enrollment_no}}"><button id="downloadresumebutton">Download</button></a>
-            <form action="/uploadresume" method="post" enctype="multipart/form-data" id="uploadresumeform">
+            <form action="/student/uploadresume" method="post" enctype="multipart/form-data" id="uploadresumeform">
                 @csrf
                 <label for="resume">Change Resume:</label>
                 <input type="file" name="resume" id="resume">

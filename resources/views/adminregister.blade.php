@@ -19,7 +19,7 @@
 
 <main class="container">
     <div class="maindiv">
-        <form action="/adminregister" method="post" class="form">
+        <form action="/admin/adminregister" method="post" class="form">
             @csrf
             <h1>Admin Registration</h1><br><br>
             <div class="inputs">

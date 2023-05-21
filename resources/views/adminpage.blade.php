@@ -21,17 +21,17 @@
 @endpush
 
 @push('extraheaderlink2')
-<li><a href="/allcompanies" class="navigations">Companies</a></li>
+<li><a href="/admin/allcompanies" class="navigations">Companies</a></li>
 
 @endpush
 
 @push('extraheaderlink3')
-<li><a href="/addcompany" class="navigations">Add Company</a></li>
+<li><a href="/admin/addcompany" class="navigations">Add Company</a></li>
 
 @endpush
 
 @push('extraheaderlink4')
-<li><a href="/addcourse" class="navigations">Add Course</a></li>
+<li><a href="/admin/addcourse" class="navigations">Add Course</a></li>
 
 @endpush
 
@@ -62,20 +62,18 @@
                 <th>Section</th>
                 <th>Email</th>
                 <th>Contact No</th>
-                <th>Edit / Delete</th>
                 <th>Resume</th>
             </tr>
 
             @foreach ($students as $student)
             <tr>
                 <td>{{$student->enrollment_no}}</td>
-                <td><a href="/studentpage/{{$student->enrollment_no}}">{{$student->student_name}}</a></td>
+                <td><a href="/student/studentpage/{{$student->enrollment_no}}">{{$student->student_name}}</a></td>
                 <td>{{$student->course}}</td>
                 <td>{{$student->semester}}</td>
                 <td>{{$student->section}}</td>
                 <td>{{$student->email}}</td>
                 <td>{{$student->contact_no}}</td>
-                <td><a href="{{url('/editstudent')."/".$student->enrollment_no}}"><button id="editbutton">Edit</button></a><a href="{{url('/deletestudent')."/".$student->enrollment_no}}"><button id="deletebutton">Delete</button></a></td>
                 <td>
                     <a href="{{url('/downloadresume')."/".$student->enrollment_no}}"><button id="downloadresumebutton">Download</button></a>
                 </td>
