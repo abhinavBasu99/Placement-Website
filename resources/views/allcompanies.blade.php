@@ -21,14 +21,20 @@
 @endpush
 
 @push('extraheaderlink2')
-<li><a href="/addcompany" class="navigations">Add Company</a></li>
+<li><a href="/allcompanies" class="navigations">Companies</a></li>
 
 @endpush
 
 @push('extraheaderlink3')
-<li><a href="/allcompanies" class="navigations">Companies</a></li>
+<li><a href="/addcompany" class="navigations">Add Company</a></li>
 
 @endpush
+
+@push('extraheaderlink4')
+<li><a href="/addcourse" class="navigations">Add Course</a></li>
+
+@endpush
+
 
 @section('main-section')
 

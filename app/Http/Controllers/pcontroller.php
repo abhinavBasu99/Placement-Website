@@ -190,6 +190,8 @@ class pcontroller extends Controller{
 
 
     public function submitaddcompany(Request $request){
+        $courses = Courses::all();
+
         $request->validate(
             [
                 'c_no' => 'required|numeric|unique:companies,c_no',
@@ -199,21 +201,36 @@ class pcontroller extends Controller{
                 'tenth_eligibility_percentage' => 'required|numeric|between:1, 100',
                 'twelth_eligibility_percentage' => 'required|numeric|between:1, 100',
                 'graduation_eligibility_percentage' => 'required|numeric|between:1, 100',
+                'number_of_eligible_courses' => 'required|numeric|max:'.count($courses),
                 ]
             );
 
+            $add_company_data = $request->all();
+
+            return redirect('/selectcourses')->with('add_company_data', $add_company_data);
+        }
+
+    public function selectcourses(){
+            $courses = Courses::all();
+            $data = compact('courses');
+
+            return view('selectcourses')->with($data);
+        }
+
+    public function submitselectcourses(Request $request){
+            $company_data = json_decode($request->add_company_data);
 
             $company = new Companies();
-            $company->c_no = $request->c_no;
-            $company->name_of_company = $request->name_of_company;
-            $company->website = $request->website;
-            $company->package = $request->package;
-            $company->tenth_eligibility_percentage = $request->tenth_eligibility_percentage;
-            $company->twelth_eligibility_percentage = $request->twelth_eligibility_percentage;
-            $company->graduation_eligibility_percentage = $request->graduation_eligibility_percentage;
+            $company->c_no = $company_data->c_no;
+            $company->name_of_company = $company_data->name_of_company;
+            $company->website = $company_data->website;
+            $company->package = $company_data->package;
+            $company->tenth_eligibility_percentage = $company_data->tenth_eligibility_percentage;
+            $company->twelth_eligibility_percentage = $company_data->twelth_eligibility_percentage;
+            $company->graduation_eligibility_percentage = $company_data->graduation_eligibility_percentage;
             $company->save();
 
-            $currentcompany = Companies::find($request->c_no);
+            $currentcompany = Companies::find($company_data->c_no);
             $courses =  $request->course;
             $currentcompany->courses()->attach($courses);
 
@@ -309,14 +326,24 @@ class pcontroller extends Controller{
         return (new EligibleStudents($id))->download($company->name_of_company." Eligible Students.xlsx");
     }
 
-    public function example(){
+    public function addcourse(){
+        return view('addcourse');
+    }
 
-        $companies = Companies::all();
-        $courses = Courses::all();
-        $data = compact('companies', 'courses');
+    public function submitaddcourse(Request $request){
+        $request->validate(
+            [
+                'course_id' => 'required|numeric|unique:courses,course_id',
+                'course_name' => 'required'
+            ]
+            );
 
-        return view('example')->with($data);
+        $course = new Courses();
+        $course->course_id = $request->course_id;
+        $course->course_name = $request->course_name;
+        $course->save();
 
+        return redirect('/addcourse');
     }
 
 }

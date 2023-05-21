@@ -21,12 +21,17 @@
 @endpush
 
 @push('extraheaderlink2')
-<li><a href="/addcompany" class="navigations">Add Company</a></li>
+<li><a href="/allcompanies" class="navigations">Companies</a></li>
 
 @endpush
 
 @push('extraheaderlink3')
-<li><a href="/allcompanies" class="navigations">Companies</a></li>
+<li><a href="/addcompany" class="navigations">Add Company</a></li>
+
+@endpush
+
+@push('extraheaderlink4')
+<li><a href="/addcourse" class="navigations">Add Course</a></li>
 
 @endpush
 
@@ -89,25 +94,13 @@
                         {{$message}}
                         @enderror
                     </span>
-                    <label for="">Eligible Courses:</label>
-                    <label for="eligiblecourses" id="eligiblecourses">
-                        <div class="courses">
-                            <label for="1">B Tech</label>
-                            <input type="checkbox" name="course[]" id="btech" value="1">
-                            <label for="2">M Tech</label>
-                            <input type="checkbox" name="course[]" id="mtech" value="2">
-                            <label for="3">BCA</label>
-                            <input type="checkbox" name="course[]" id="bca" value="3">
-                        </div>
-                        <div class="courses">
-                            <label for="4">MCA</label>
-                            <input type="checkbox" name="course[]" id="mca" value="4">
-                            <label for="5">BBA</label>
-                            <input type="checkbox" name="course[]" id="bba" value="5">
-                            <label for="6">MBA</label>
-                            <input type="checkbox" name="course[]" id="mba" value="6">
-                        </div>
-                    </label>
+                    <label for="number_of_eligible_courses">No. of Eligible Courses</label>
+                    <input type="number" name="number_of_eligible_courses" id="number_of_eligible_courses">
+                    <span class="error">
+                        @error('number_of_eligible_courses')
+                        {{$message}}
+                        @enderror
+                    </span>
                 </div>
             </div>
             <div class="button">

@@ -51,7 +51,16 @@ Route::get('/percompanyeligiblestudents/{id}',[pcontroller::class,'percompanyeli
 
 Route::get('/downloadexcel/{id}',[pcontroller::class,'downloadexcel']);
 
-Route::get('/example',[pcontroller::class,'example']);
+Route::get('/selectcourses',[pcontroller::class,'selectcourses']);
+
+Route::post('/selectcourses',[pcontroller::class,'submitselectcourses']);
+
+Route::get('/addcourse',[pcontroller::class,'addcourse']);
+
+Route::post('/addcourse',[pcontroller::class,'submitaddcourse']);
+
+
+
 
 
 

@@ -18,6 +18,7 @@
                 @stack('extraheaderlink1')
                 @stack('extraheaderlink2')
                 @stack('extraheaderlink3')
+                @stack('extraheaderlink4')
             </ul>
         </nav>
     </header>
