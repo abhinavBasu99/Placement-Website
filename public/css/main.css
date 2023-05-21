@@ -44,6 +44,10 @@ main {
     margin: 30px;
 }
 
-.navigations {
+.navigations a {
     color: white;
+}
+
+.navigations:hover {
+    transform: scale(1.2);
 }

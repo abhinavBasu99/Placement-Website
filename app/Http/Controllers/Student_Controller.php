@@ -61,7 +61,8 @@ class Student_Controller extends Controller
         $students = Student::all();
         foreach ($students as $student) {
             if($request->email == $student->email && Hash::check($request->password, $student->password)){
-                return redirect()->route('studentpage', ['id' => $student])->with('success', 'You have logged in successfully.');
+                session()->put('student_login_status', true);
+                return redirect()->route('studentpage', ['id' => $student]);
             }
         }
 
@@ -130,7 +131,7 @@ class Student_Controller extends Controller
     public function uploadresume(Request $request){
         $request->validate(
             [
-                'resume' => 'file|mimes:pdf',
+                'resume' => 'required|file|mimes:pdf',
             ]
         );
 
@@ -141,5 +142,10 @@ class Student_Controller extends Controller
         $request->file('resume')->storeAs('public/resumes', $filename);
 
         return redirect()->route('studentpage', ['id' => $student]);
+    }
+
+    public function studentlogout(){
+        session()->put('student_login_status', false);
+        return view('home');
     }
 }

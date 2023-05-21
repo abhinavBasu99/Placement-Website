@@ -5,6 +5,11 @@
 
 @endpush
 
+@push('extraheaderlink1')
+<li  class="navigations"><a href="/"><button id="logoutbutton">Log Out</button></a></li>
+
+@endpush
+
 @push('mycss')
 <link rel="stylesheet" href="{{ url('/css/main.css') }}">
 
@@ -21,11 +26,7 @@
 @endpush
 
 @section('main-section')
-<span id="successmessage">
-    @if (Session::has('success'))
-    {{Session::get('success')}}
-    @endif
-</span>
+
 <main class="container">
     <div class="studentdetails">
         <img src="/images/profileImage.png" alt="Your Photo" id="yourimage">
@@ -49,6 +50,11 @@
                 @csrf
                 <label for="resume">Change Resume:</label>
                 <input type="file" name="resume" id="resume">
+                <span class="error">
+                    @error('resume')
+                    {{$message}}
+                    @enderror
+                </span>
                 <button type="submit" id="uploadresumebutton">Upload</button>
                 <label for="hiddenid"></label>
                 <input type="text" name="hiddenid" class="hidden" id="hiddenid" value={{$student->enrollment_no}}>

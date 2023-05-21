@@ -47,7 +47,8 @@ class Admin_Controller extends Controller
         $admins = Admin::all();
         foreach ($admins as $admin) {
             if($request->email == $admin->email && Hash::check($request->password, $admin->password)){
-                return redirect('/admin/adminpage')->with('success', 'You have logged in successfully.');
+                session()->put('admin_login_status', true);
+                return redirect('/admin/adminpage');
             }
         }
 

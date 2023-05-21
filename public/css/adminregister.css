@@ -7,16 +7,18 @@
 
 .maindiv {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 50%;
-    height: 80%;
+    height: 90%;
     background-color: burlywood;
     border: 20px ridge brown;
     box-shadow: 20px 20px 30px;
 }
 
 .form {
+    height: 90%;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -50,6 +52,15 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+.loginlink {
+    color: black;
+    font-size: 18px;
+}
+
+.loginlink:hover {
+    transform: scale(1.2);
 }
 
 label {

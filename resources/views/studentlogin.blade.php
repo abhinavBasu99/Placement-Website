@@ -4,6 +4,16 @@
 <title>Student Login</title>
 @endpush
 
+@push('extraheaderlink1')
+<li class="navigations"><a href="/">Home</a></li>
+
+@endpush
+
+@push('extraheaderlink2')
+<li class="navigations"><a href="/admin/adminlogin">Admin<br>Login / Register</a></li>
+
+@endpush
+
 @push('mycss')
 <link rel="stylesheet" href="{{ url('/css/main.css') }}">
 

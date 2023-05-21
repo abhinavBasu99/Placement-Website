@@ -59,6 +59,10 @@ button:hover {
     font-size: 18px;
 }
 
+.registerlink:hover {
+    transform: scale(1.2);
+}
+
 #errormessage {
     color: red;
     font-weight: bold;

@@ -13,6 +13,7 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class General_Controller extends Controller{
     public function home(){
+        session()->flush();
         return view('home');
     }
 

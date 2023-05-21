@@ -3,6 +3,16 @@
 @push('mytitle')
 <title>Placement Home</title>
 
+@push('extraheaderlink1')
+<li class="navigations"><a href="/student/studentlogin">Student<br>Login / Register</a></li>
+
+@endpush
+
+@push('extraheaderlink2')
+<li class="navigations"><a href="/admin/adminlogin">Admin<br>Login / Register</a></li>
+
+@endpush
+
 @endpush
 @push('mycss')
 <link rel="stylesheet" href="{{ url('/css/main.css') }}">

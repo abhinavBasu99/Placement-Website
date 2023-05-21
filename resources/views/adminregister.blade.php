@@ -4,6 +4,16 @@
 <title>Admin Registration</title>
 @endpush
 
+@push('extraheaderlink1')
+<li class="navigations"><a href="/">Home</a></li>
+
+@endpush
+
+@push('extraheaderlink2')
+<li class="navigations"><a href="/student/studentlogin">Student<br>Login / Register</a></li>
+
+@endpush
+
 @push('mycss')
 <link rel="stylesheet" href="{{ url('/css/main.css') }}">
 
@@ -65,6 +75,7 @@
             </div>
             <button type="submit">Register</button><br>
         </form>
+        <a href="/admin/adminlogin" class="loginlink">Already have an account? Log In</a>
     </div>
 </main>
 

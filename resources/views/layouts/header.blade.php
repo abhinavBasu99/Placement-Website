@@ -12,13 +12,15 @@
     <header class="header">
         <nav class="navbar">
             <ul>
-                <li><a href="/" class="navigations">Home</a></li>
+                {{-- <li><a href="/" class="navigations">Home</a></li>
                 <li><a href="/student/studentlogin" class="navigations">Student<br>Login / Register</a></li>
-                <li><a href="/admin/adminlogin" class="navigations">Admin<br>Login / Register</a></li>
+                <li><a href="/admin/adminlogin" class="navigations">Admin<br>Login / Register</a></li> --}}
                 @stack('extraheaderlink1')
                 @stack('extraheaderlink2')
                 @stack('extraheaderlink3')
                 @stack('extraheaderlink4')
+                @stack('extraheaderlink5')
+                @stack('extraheaderlink6')
             </ul>
         </nav>
     </header>

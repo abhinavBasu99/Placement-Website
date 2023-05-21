@@ -5,6 +5,26 @@
 
 @endpush
 
+@push('extraheaderlink1')
+<li class="navigations"><a href="/admin/adminpage">Students</a></li>
+
+@endpush
+
+@push('extraheaderlink2')
+<li class="navigations"><a href="/admin/allcompanies">Companies</a></li>
+
+@endpush
+
+@push('extraheaderlink3')
+<li class="navigations"><a href="/admin/addcourse">Add Course</a></li>
+
+@endpush
+
+@push('extraheaderlink4')
+<li  class="navigations"><a href="/"><button id="logoutbutton">Log Out</button></a></li>
+
+@endpush
+
 @push('mycss')
 <link rel="stylesheet" href="{{ url('/css/main.css') }}">
 
@@ -12,26 +32,6 @@
 
 @push('mycss2')
 <link rel="stylesheet" href="{{ url('/css/addcompany.css') }}">
-
-@endpush
-
-@push('extraheaderlink1')
-<li><a href="/statistics" class="navigations">Statistics</a></li>
-
-@endpush
-
-@push('extraheaderlink2')
-<li><a href="/admin/allcompanies" class="navigations">Companies</a></li>
-
-@endpush
-
-@push('extraheaderlink3')
-<li><a href="/admin/addcompany" class="navigations">Add Company</a></li>
-
-@endpush
-
-@push('extraheaderlink4')
-<li><a href="/admin/addcourse" class="navigations">Add Course</a></li>
 
 @endpush
 
@@ -104,7 +104,7 @@
                 </div>
             </div>
             <div class="button">
-                <button type="submit">Add</button>
+                <button type="submit" id="addbutton">Add</button>
             </div>
         </form>
     </div>

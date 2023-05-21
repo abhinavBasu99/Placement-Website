@@ -21,15 +21,15 @@ Route::get('/student/studentlogin',[Student_Controller::class,'studentlogin']);
 
 Route::post('/student/studentlogin',[Student_Controller::class,'studentauthentication']);
 
-Route::get('/student/studentpage',[Student_Controller::class,'studentpage'])->name('studentpage');
+Route::get('/student/studentpage',[Student_Controller::class,'studentpage'])->name('studentpage')->middleware('student_access');
 
-Route::get('/student/editstudent/{id}',[Student_Controller::class,'editstudent']);
+Route::get('/student/editstudent/{id}',[Student_Controller::class,'editstudent'])->middleware('student_access');
 
-Route::post('/student/editstudent/{id}',[Student_Controller::class,'submiteditstudent']);
+Route::post('/student/editstudent/{id}',[Student_Controller::class,'submiteditstudent'])->middleware('student_access');
 
-Route::get('/student/deletestudent/{id}',[Student_Controller::class,'deletestudent']);
+Route::get('/student/deletestudent/{id}',[Student_Controller::class,'deletestudent'])->middleware('student_access');
 
-Route::post('/student/uploadresume',[Student_Controller::class,'uploadresume']);
+Route::post('/student/uploadresume',[Student_Controller::class,'uploadresume'])->middleware('student_access');
 
 // Admin Routes
 
@@ -41,31 +41,31 @@ Route::get('/admin/adminlogin',[Admin_Controller::class,'adminlogin']);
 
 Route::post('/admin/adminlogin',[Admin_Controller::class,'adminauthentication']);
 
-Route::get('/admin/adminpage',[Admin_Controller::class,'adminpage'])->name('adminpage');
+Route::get('/admin/adminpage',[Admin_Controller::class,'adminpage'])->name('adminpage')->middleware('admin_access');
 
-Route::get('/admin/allcompanies',[Admin_Controller::class,'allcompanies']);
+Route::get('/admin/allcompanies',[Admin_Controller::class,'allcompanies'])->middleware('admin_access');
 
-Route::get('/admin/addcompany',[Admin_Controller::class,'addcompany']);
+Route::get('/admin/addcompany',[Admin_Controller::class,'addcompany'])->middleware('admin_access');
 
-Route::post('/admin/addcompany',[Admin_Controller::class,'submitaddcompany']);
+Route::post('/admin/addcompany',[Admin_Controller::class,'submitaddcompany'])->middleware('admin_access');
 
-Route::get('/admin/addcompany/selectcourses',[Admin_Controller::class,'selectcourses']);
+Route::get('/admin/addcompany/selectcourses',[Admin_Controller::class,'selectcourses'])->middleware('admin_access');
 
-Route::post('/admin/addcompany/selectcourses',[Admin_Controller::class,'submitselectcourses']);
+Route::post('/admin/addcompany/selectcourses',[Admin_Controller::class,'submitselectcourses'])->middleware('admin_access');
 
-Route::get('/admin/editcompany/{id}',[Admin_Controller::class,'editcompany']);
+Route::get('/admin/editcompany/{id}',[Admin_Controller::class,'editcompany'])->middleware('admin_access');
 
-Route::post('/admin/editcompany/{id}',[Admin_Controller::class,'submiteditcompany']);
+Route::post('/admin/editcompany/{id}',[Admin_Controller::class,'submiteditcompany'])->middleware('admin_access');
 
-Route::get('/admin/deletecompany/{id}',[Admin_Controller::class,'deletecompany']);
+Route::get('/admin/deletecompany/{id}',[Admin_Controller::class,'deletecompany'])->middleware('admin_access');
 
-Route::get('/admin/percompanyeligiblestudents/{id}',[Admin_Controller::class,'percompanyeligiblestudents']);
+Route::get('/admin/percompanyeligiblestudents/{id}',[Admin_Controller::class,'percompanyeligiblestudents'])->middleware('admin_access');
 
-Route::get('/admin/downloadexcel/{id}',[Admin_Controller::class,'downloadexcel']);
+Route::get('/admin/downloadexcel/{id}',[Admin_Controller::class,'downloadexcel'])->middleware('admin_access');
 
-Route::get('/admin/addcourse',[Admin_Controller::class,'addcourse']);
+Route::get('/admin/addcourse',[Admin_Controller::class,'addcourse'])->middleware('admin_access');
 
-Route::post('/admin/addcourse',[Admin_Controller::class,'submitaddcourse']);
+Route::post('/admin/addcourse',[Admin_Controller::class,'submitaddcourse'])->middleware('admin_access');
 
 
 
