@@ -11,7 +11,7 @@
 @endpush
 
 @push('mycss2')
-<link rel="stylesheet" href="{{ url('/css/selectbranches.css') }}">
+<link rel="stylesheet" href="{{ url('/css/selectcourses.css') }}">
 
 @endpush
 
