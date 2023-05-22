@@ -5,6 +5,7 @@ use App\Models\Companies;
 use App\Models\Admin;
 use App\Models\Courses;
 use App\Models\Companies_Courses;
+use App\Models\Companies_Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;

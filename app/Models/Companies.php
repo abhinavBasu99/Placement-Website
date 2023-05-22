@@ -14,4 +14,8 @@ class Companies extends Model
     public function courses(){
         return $this->belongsToMany(Courses::class, 'companies_courses', 'company_no', 'course_id');
     }
+
+    public function students(){
+        return $this->belongsToMany(Student::class, 'companies_student', 'company_no', 'enrollment_no');
+    }
 }

@@ -10,4 +10,8 @@ class Student extends Model
     use HasFactory;
     protected $table = 'student';
     protected $primaryKey = 'enrollment_no';
+
+    public function companies(){
+        return $this->belongsToMany(Companies::class, 'companies_student', 'company_no', 'enrollment_no');
+    }
 }

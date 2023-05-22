@@ -7,6 +7,7 @@ use App\Models\Companies;
 use App\Models\Admin;
 use App\Models\Courses;
 use App\Models\Companies_Courses;
+use App\Models\Companies_Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -78,15 +79,29 @@ class Student_Controller extends Controller
         $companies = Companies::all();
         $student = Student::find($enrollment_no);
 
+        $appliedcompanies = Companies_Student::where('enrollment_no', $enrollment_no)->get();
         $eligiblecompanies = array();
+
+        //Below Code is to determine the eligible companies for the student
         foreach($companies as $company){
             foreach($company->courses as $company_course){
                 if($student->course == $company_course->course_name && $student->tenth_percentage >= $company->tenth_eligibility_percentage && $student->twelth_percentage >= $company->twelth_eligibility_percentage && $student->graduation_percentage >= $company->graduation_eligibility_percentage){
+
+                //Below code is to determine whether student has applied to this eligible company or not
+                $applied = false;
+                foreach($appliedcompanies as $appliedcompany){
+                    if($company->c_no == $appliedcompany->company_no){
+                    $applied = true;
+                    break;
+                    }
+                }
+
+                //This is to input the applystatus in this company data and push it in the array
+                    $company->applystatus = $applied;
                     array_push($eligiblecompanies, $company);
                 }
             }
         }
-
 
         $data = compact('eligiblecompanies', 'student');
 
@@ -151,6 +166,16 @@ class Student_Controller extends Controller
         $request->file('resume')->storeAs('public/resumes', $filename);
 
         return redirect('/student/studentpage');
+    }
+
+    public function applyforcompany($id){
+        $enrollment_no = session('student_enrollment_no');
+        $student = Student::find($enrollment_no);
+        $company = Companies::find($id);
+
+        $company->students()->attach($student->enrollment_no);
+
+        return redirect()->back();
     }
 
 }

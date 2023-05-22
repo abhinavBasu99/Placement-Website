@@ -31,6 +31,8 @@ Route::get('/student/deletestudent',[Student_Controller::class,'deletestudent'])
 
 Route::post('/student/uploadresume',[Student_Controller::class,'uploadresume'])->middleware('student_access');
 
+Route::get('/student/applyforcompany/{id}', [Student_Controller::class, 'applyforcompany'])->middleware('student_access');
+
 // Admin Routes
 
 Route::get('/admin/adminregister',[Admin_Controller::class,'adminregister']);

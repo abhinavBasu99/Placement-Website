@@ -20,11 +20,6 @@
 
 @endpush
 
-@push('javascript')
-<script src="{{url('/js/studentpage.js')}}"></script>
-
-@endpush
-
 @section('main-section')
 
 <main class="container">
@@ -56,8 +51,6 @@
                     @enderror
                 </span>
                 <button type="submit" id="uploadresumebutton">Upload</button>
-                <label for="hiddenid"></label>
-                <input type="text" name="hiddenid" class="hidden" id="hiddenid" value={{$student->enrollment_no}}>
             </form>
         </div>
     </div>
@@ -71,15 +64,19 @@
                 <th>Apply / Reject</th>
             </tr>
             @foreach ($eligiblecompanies as $company)
-            <tr>
-                <td>{{$company->c_no}}</td>
-                <td>{{$company->name_of_company}}</td>
-                <td><a href="">{{$company->website}}</a></td>
-                <td>{{$company->package}}</td>
-                <td class="applystatuses" id="{{'applystatus'.$company->c_no}}">
-                    <a href=""><button class="applybuttons" id="{{'applybutton'.$company->c_no}}">Apply</button></a><a href=""><button class="rejectbuttons" id="{{'rejectbutton'.$company->c_no}}">Reject</button></a>
-                </td>
-            </tr>
+                <tr>
+                    <td>{{$company->c_no}}</td>
+                    <td>{{$company->name_of_company}}</td>
+                    <td><a href="">{{$company->website}}</a></td>
+                    <td>{{$company->package}}</td>
+                    @if ($company->applystatus)
+                        <td>Applied</td>
+                        @else
+                            <td class="applystatuses" id="{{'applystatus'.$company->c_no}}">
+                                <a href="/student/applyforcompany/{{$company->c_no}}"><button class="applybuttons" id="{{'applybutton'.$company->c_no}}">Apply</button></a><a href=""><button class="rejectbuttons" id="{{'rejectbutton'.$company->c_no}}">Reject</button></a>
+                            </td>
+                    @endif
+                </tr>
             @endforeach
         </table>
     </div>
