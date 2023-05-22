@@ -21,13 +21,13 @@ Route::get('/student/studentlogin',[Student_Controller::class,'studentlogin']);
 
 Route::post('/student/studentlogin',[Student_Controller::class,'studentauthentication']);
 
-Route::get('/student/studentpage',[Student_Controller::class,'studentpage'])->name('studentpage')->middleware('student_access');
+Route::get('/student/studentpage',[Student_Controller::class,'studentpage'])->middleware('student_access');
 
-Route::get('/student/editstudent/{id}',[Student_Controller::class,'editstudent'])->middleware('student_access');
+Route::get('/student/editstudent',[Student_Controller::class,'editstudent'])->middleware('student_access');
 
-Route::post('/student/editstudent/{id}',[Student_Controller::class,'submiteditstudent'])->middleware('student_access');
+Route::post('/student/editstudent',[Student_Controller::class,'submiteditstudent'])->middleware('student_access');
 
-Route::get('/student/deletestudent/{id}',[Student_Controller::class,'deletestudent'])->middleware('student_access');
+Route::get('/student/deletestudent',[Student_Controller::class,'deletestudent'])->middleware('student_access');
 
 Route::post('/student/uploadresume',[Student_Controller::class,'uploadresume'])->middleware('student_access');
 
@@ -45,6 +45,8 @@ Route::get('/admin/adminpage',[Admin_Controller::class,'adminpage'])->name('admi
 
 Route::get('/admin/allcompanies',[Admin_Controller::class,'allcompanies'])->middleware('admin_access');
 
+Route::get('/admin/percompanyeligiblestudents/{id}',[Admin_Controller::class,'percompanyeligiblestudents'])->middleware('admin_access');
+
 Route::get('/admin/addcompany',[Admin_Controller::class,'addcompany'])->middleware('admin_access');
 
 Route::post('/admin/addcompany',[Admin_Controller::class,'submitaddcompany'])->middleware('admin_access');
@@ -58,8 +60,6 @@ Route::get('/admin/editcompany/{id}',[Admin_Controller::class,'editcompany'])->m
 Route::post('/admin/editcompany/{id}',[Admin_Controller::class,'submiteditcompany'])->middleware('admin_access');
 
 Route::get('/admin/deletecompany/{id}',[Admin_Controller::class,'deletecompany'])->middleware('admin_access');
-
-Route::get('/admin/percompanyeligiblestudents/{id}',[Admin_Controller::class,'percompanyeligiblestudents'])->middleware('admin_access');
 
 Route::get('/admin/downloadexcel/{id}',[Admin_Controller::class,'downloadexcel'])->middleware('admin_access');
 

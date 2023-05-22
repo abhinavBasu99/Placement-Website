@@ -30,7 +30,7 @@
 
 <main class="container">
     <div class="div-of-form">
-        <form action="{{url('/student/editstudent')."/".$student->enrollment_no}}" method="post" class="form">
+        <form action="/student/editstudent" method="post" class="form">
             @csrf
             <h1>Edit Student Details</h1>
             <div class="inputs">

@@ -1,7 +1,7 @@
 @extends('layouts.details')
 
 @push('mytitle')
-<title>Student Login</title>
+<title>Admin Login</title>
 @endpush
 
 @push('extraheaderlink1')

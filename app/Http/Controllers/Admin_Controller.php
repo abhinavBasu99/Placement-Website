@@ -88,11 +88,7 @@ class Admin_Controller extends Controller
     }
 
     public function addcompany(){
-        $url = url('/admin/addcompany');
-        $title = 'Add Company';
-        $buttontext = 'Add';
-        $data = compact('url', 'title', 'buttontext');
-        return view('addcompany')->with($data);
+        return view('addcompany');
     }
 
 

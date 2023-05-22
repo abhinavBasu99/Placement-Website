@@ -55,13 +55,13 @@
 
                 <tr>
                     <td>{{$company->c_no}}</td>
-                    <td><a href="{{url('/admin/percompanyeligiblestudents')."/".$company->c_no}}">{{$company->name_of_company}}</a></td>
+                    <td><a href="/admin/percompanyeligiblestudents/{{$company->c_no}}">{{$company->name_of_company}}</a></td>
                     <td><a href="">{{$company->website}}</a></td>
                     <td>{{$company->package}}</td>
                     <td>{{$company->tenth_eligibility_percentage}}</td>
                     <td>{{$company->twelth_eligibility_percentage}}</td>
                     <td>{{$company->graduation_eligibility_percentage}}</td>
-                    <td><a href="{{url('/admin/editcompany')."/".$company->c_no}}"><button id="editbutton">Edit</button></a><a href="{{url('/admin/deletecompany')."/".$company->c_no}}"><button id="deletebutton">Delete</button></a></td>
+                    <td><a href="/admin/editcompany/{{$company->c_no}}"><button id="editbutton">Edit</button></a><a href="/admin/deletecompany/{{$company->c_no}}"><button id="deletebutton">Delete</button></a></td>
                 </tr>
                 @endforeach
             </tbody>

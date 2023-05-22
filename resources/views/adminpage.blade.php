@@ -71,7 +71,7 @@
                 <td>{{$student->email}}</td>
                 <td>{{$student->contact_no}}</td>
                 <td>
-                    <a href="{{url('/downloadresume')."/".$student->enrollment_no}}"><button id="downloadresumebutton">Download</button></a>
+                    <a href="/downloadresume/{{$student->enrollment_no}}"><button id="downloadresumebutton">Download</button></a>
                 </td>
             </tr>
             @endforeach

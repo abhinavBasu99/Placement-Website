@@ -61,8 +61,12 @@ class Student_Controller extends Controller
         $students = Student::all();
         foreach ($students as $student) {
             if($request->email == $student->email && Hash::check($request->password, $student->password)){
-                session()->put('student_login_status', true);
-                return redirect()->route('studentpage', ['id' => $student]);
+                session(
+                    ['student_login_status' => true,
+                     'student_enrollment_no' => $student->enrollment_no,
+                    ]
+                );
+                return redirect('/student/studentpage');
             }
         }
 
@@ -70,9 +74,9 @@ class Student_Controller extends Controller
     }
 
     public function studentpage(Request $request){
-        $value = request()->input('id');
+        $enrollment_no = session('student_enrollment_no');
         $companies = Companies::all();
-        $student = Student::find($value);
+        $student = Student::find($enrollment_no);
 
         $eligiblecompanies = array();
         foreach($companies as $company){
@@ -89,13 +93,14 @@ class Student_Controller extends Controller
         return view('studentpage')->with($data);
     }
 
-    public function editstudent($id){
-        $student = Student::find($id);
+    public function editstudent(){
+        $enrollment_no = session('student_enrollment_no');
+        $student = Student::find($enrollment_no);
         $data = compact('student');
         return view('editstudent')->with($data);
     }
 
-    public function submiteditstudent(Request $request, $id){
+    public function submiteditstudent(Request $request){
         $request->validate(
             [
                 'student_name' => 'required|string',
@@ -109,7 +114,9 @@ class Student_Controller extends Controller
             ]
             );
 
-        $student = Student::find($id);
+        $enrollment_no = session('student_enrollment_no');
+
+        $student = Student::find($enrollment_no);
         $student->student_name = $request->student_name;
         $student->email = $request->email;
         $student->contact_no = $request->contact_no;
@@ -120,12 +127,14 @@ class Student_Controller extends Controller
         $student->twelth_percentage = $request->twelth_percentage;
         $student->save();
 
-        return redirect()->back();
+        return redirect('/student/studentpage');
     }
 
-    public function deletestudent($id){
-        Student::find($id)->delete();
-        return redirect('/student/studentlogin');
+    public function deletestudent(){
+        $enrollment_no = session('student_enrollment_no');
+
+        Student::find($enrollment_no)->delete();
+        return redirect('/');
     }
 
     public function uploadresume(Request $request){
@@ -135,17 +144,13 @@ class Student_Controller extends Controller
             ]
         );
 
-        $value = $request->hiddenid;
-        $student = Student::find($value);
+        $enrollment_no = session('student_enrollment_no');
+        $student = Student::find($enrollment_no);
 
         $filename = $student->enrollment_no."resume.pdf";
         $request->file('resume')->storeAs('public/resumes', $filename);
 
-        return redirect()->route('studentpage', ['id' => $student]);
+        return redirect('/student/studentpage');
     }
 
-    public function studentlogout(){
-        session()->put('student_login_status', false);
-        return view('home');
-    }
 }

@@ -40,12 +40,12 @@
             <li>Contact No.:- {{$student->contact_no}}</li>
         </ul>
         <div class="profileoptions">
-        <a href="{{url('/student/editstudent')."/".$student->enrollment_no}}"><button id="editbutton">Edit Your Details</button></a>
-        <a href="{{url('/student/deletestudent')."/".$student->enrollment_no}}"><button id="deletebutton">Delete Profile</button></a>
+        <a href="/student/editstudent"><button id="editbutton">Edit Your Details</button></a>
+        <a href="/student/deletestudent"><button id="deletebutton">Delete Profile</button></a>
         </div>
         <div id="resume">
             <span>Resume:</span>
-            <a href="{{url('/downloadresume')."/".$student->enrollment_no}}"><button id="downloadresumebutton">Download</button></a>
+            <a href="/downloadresume/{{$student->enrollment_no}}"><button id="downloadresumebutton">Download</button></a>
             <form action="/student/uploadresume" method="post" enctype="multipart/form-data" id="uploadresumeform">
                 @csrf
                 <label for="resume">Change Resume:</label>
