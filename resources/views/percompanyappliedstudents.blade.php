@@ -1,7 +1,7 @@
 @extends('layouts.details')
 
 @push('mytitle')
-<title>Eligible Students</title>
+<title>Applied Students</title>
 
 @endpush
 
@@ -36,7 +36,7 @@
 @endpush
 
 @push('mycss2')
-<link rel="stylesheet" href="{{ url('/css/percompanyeligiblestudents.css') }}">
+<link rel="stylesheet" href="{{ url('/css/percompanyappliedstudents.css') }}">
 
 @endpush
 
@@ -44,9 +44,8 @@
 
 <main class="container">
     <div id="divofstudentstable">
-        <h1>{{$company->name_of_company}} Eligible Students</h1>
-        <div><a href="/admin/percompanyappliedstudents/{{$company->c_no}}"><button id="appliedstudentsbutton">Click Here For Applied Students</button></a></div>
-        <div><a href="/admin/percompanyeligiblestudents/downloadexcel/{{$company->c_no}}"><button id="downloadexcelbutton">Download as Excel</button></a></div>
+        <h1>{{$company->name_of_company}} Applied Students</h1>
+        <div><a href="/admin/percompanyappliedstudents/downloadexcel/{{$company->c_no}}"><button id="downloadexcelbutton">Download as Excel</button></a></div>
         <table id="studentstable">
             <thead>
                 <th>Enrollment No</th>
@@ -61,7 +60,7 @@
                 <th>Graduation Percentage</th>
             </thead>
             <tbody>
-                @foreach ($eligiblestudents as $student)
+                @foreach ($studentsdetails as $student)
 
                 <tr>
                     <td>{{$student->enrollment_no}}</td>

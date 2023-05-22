@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Exports\EligibleStudents;
+use App\Exports\AppliedStudents;
 use Maatwebsite\Excel\Facades\Excel;
 
 class Admin_Controller extends Controller
@@ -88,10 +89,24 @@ class Admin_Controller extends Controller
         return view('percompanyeligiblestudents')->with($data);
     }
 
+    public function percompanyappliedstudents($id){
+        $appliedstudents = Companies_Student::where('company_no', $id)->get();
+        $appliedstudents_enrollment_nos = array();
+        foreach($appliedstudents as $student){
+            array_push($appliedstudents_enrollment_nos, $student->enrollment_no);
+        }
+
+        $studentsdetails = Student::find($appliedstudents_enrollment_nos);
+        $company = Companies::find($id);
+        $data = compact('studentsdetails', 'company');
+
+        return view('percompanyappliedstudents')->with($data);
+
+    }
+
     public function addcompany(){
         return view('addcompany');
     }
-
 
     public function submitaddcompany(Request $request){
         $courses = Courses::all();
@@ -197,9 +212,15 @@ class Admin_Controller extends Controller
         return redirect('/admin/addcourse');
     }
 
-    public function downloadexcel($id){
+    public function downloadexcelpercompanyeligiblestudents($id){
         $company = Companies::find($id);
 
         return (new EligibleStudents($id))->download($company->name_of_company." Eligible Students.xlsx");
+    }
+
+    public function downloadexcelpercompanyappliedstudents($id){
+        $company = Companies::find($id);
+
+        return (new AppliedStudents($id))->download($company->name_of_company." Applied Students.xlsx");
     }
 }

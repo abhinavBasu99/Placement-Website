@@ -61,7 +61,7 @@
                 <th>Name Of Company</th>
                 <th>Website</th>
                 <th>Package (in lacks)</th>
-                <th>Apply / Reject</th>
+                <th>Apply Status</th>
             </tr>
             @foreach ($eligiblecompanies as $company)
                 <tr>
@@ -73,7 +73,8 @@
                         <td>Applied</td>
                         @else
                             <td class="applystatuses" id="{{'applystatus'.$company->c_no}}">
-                                <a href="/student/applyforcompany/{{$company->c_no}}"><button class="applybuttons" id="{{'applybutton'.$company->c_no}}">Apply</button></a><a href=""><button class="rejectbuttons" id="{{'rejectbutton'.$company->c_no}}">Reject</button></a>
+                                <span>Not Applied</span>
+                                <a href="/student/applyforcompany/{{$company->c_no}}"><button class="applybuttons" id="{{'applybutton'.$company->c_no}}">Apply</button></a>
                             </td>
                     @endif
                 </tr>

@@ -22,20 +22,6 @@ td {
     text-align: center;
 }
 
-#appliedstudentsbutton {
-    margin: 5px;
-    padding: 2px;
-    border: 2px solid black;
-    background-color: darksalmon;
-    font-weight: bold;
-}
-
-#appliedstudentsbutton:hover {
-    background-color: salmon;
-    cursor: pointer;
-    transform: scale(1.2);
-}
-
 #downloadexcelbutton {
     margin: 5px;
     padding: 2px;

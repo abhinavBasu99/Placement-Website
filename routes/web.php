@@ -49,6 +49,8 @@ Route::get('/admin/allcompanies',[Admin_Controller::class,'allcompanies'])->midd
 
 Route::get('/admin/percompanyeligiblestudents/{id}',[Admin_Controller::class,'percompanyeligiblestudents'])->middleware('admin_access');
 
+Route::get('/admin/percompanyappliedstudents/{id}',[Admin_Controller::class,'percompanyappliedstudents'])->middleware('admin_access');
+
 Route::get('/admin/addcompany',[Admin_Controller::class,'addcompany'])->middleware('admin_access');
 
 Route::post('/admin/addcompany',[Admin_Controller::class,'submitaddcompany'])->middleware('admin_access');
@@ -63,12 +65,13 @@ Route::post('/admin/editcompany/{id}',[Admin_Controller::class,'submiteditcompan
 
 Route::get('/admin/deletecompany/{id}',[Admin_Controller::class,'deletecompany'])->middleware('admin_access');
 
-Route::get('/admin/downloadexcel/{id}',[Admin_Controller::class,'downloadexcel'])->middleware('admin_access');
-
 Route::get('/admin/addcourse',[Admin_Controller::class,'addcourse'])->middleware('admin_access');
 
 Route::post('/admin/addcourse',[Admin_Controller::class,'submitaddcourse'])->middleware('admin_access');
 
+Route::get('/admin/percompanyeligiblestudents/downloadexcel/{id}',[Admin_Controller::class,'downloadexcelpercompanyeligiblestudents'])->middleware('admin_access');
+
+Route::get('/admin/percompanyappliedstudents/downloadexcel/{id}',[Admin_Controller::class,'downloadexcelpercompanyappliedstudents'])->middleware('admin_access');
 
 
 
