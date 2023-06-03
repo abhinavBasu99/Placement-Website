@@ -14,11 +14,14 @@ use Illuminate\Support\Facades\Auth;
 use App\Exports\EligibleStudents;
 use App\Exports\AppliedStudents;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\File;
 
 class Admin_Controller extends Controller
 {
     public function adminregister(){
-        return view('adminregister');
+        $no_of_admins = count(Admin::all());
+        $data = compact('no_of_admins');
+        return view('adminregister')->with($data);
     }
 
     public function submitadminregister(Request $request){
@@ -59,6 +62,19 @@ class Admin_Controller extends Controller
 
     public function adminpage(){
         $students = Student::all();
+
+        foreach($students as $student){
+            $filename = $student->enrollment_no.'resume.pdf';
+            $filepath = storage_path('app/public/resumes/'.$filename);
+
+            if(File::exists($filepath)){
+                $student->filepresent = true;
+            }
+            else{
+                $student->filepresent = false;
+            }
+        }
+
         $data = compact('students');
 
         return view('adminpage')->with($data);
@@ -105,7 +121,9 @@ class Admin_Controller extends Controller
     }
 
     public function addcompany(){
-        return view('addcompany');
+        $no_of_companies = count(Companies::all());
+        $data = compact('no_of_companies');
+        return view('addcompany')->with($data);
     }
 
     public function submitaddcompany(Request $request){
@@ -193,7 +211,9 @@ class Admin_Controller extends Controller
     }
 
     public function addcourse(){
-        return view('addcourse');
+        $no_of_courses = count(Courses::all());
+        $data = compact('no_of_courses');
+        return view('addcourse')->with($data);
     }
 
     public function submitaddcourse(Request $request){

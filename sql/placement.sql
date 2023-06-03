@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2023 at 06:03 AM
+-- Generation Time: Jun 03, 2023 at 09:07 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `a_no` varchar(4) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `a_no` int(11) NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`a_no`, `email`, `password`, `created_at`, `updated_at`) VALUES
-('1', 'admin1@gmail.com', '$2y$10$3lsQMHwJ.lAahWCYeXgBxOWLCvQHGQITRAFGr/iTAcbR0S5t4Bl6S', '2023-05-05 00:47:29', '2023-05-05 00:47:29');
+(1, 'admin1@gmail.com', '$2y$10$RqwafrbMY1RtgUoQwivl.OaViZLxsGVG58BDY3E58ODtOiCUAOkh6', '2023-05-20 01:35:03', '2023-05-20 01:35:03');
 
 -- --------------------------------------------------------
 
@@ -49,7 +49,7 @@ INSERT INTO `admin` (`a_no`, `email`, `password`, `created_at`, `updated_at`) VA
 --
 
 CREATE TABLE `companies` (
-  `c_no` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `c_no` int(11) NOT NULL,
   `name_of_company` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `website` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `package` decimal(4,2) NOT NULL,
@@ -65,9 +65,123 @@ CREATE TABLE `companies` (
 --
 
 INSERT INTO `companies` (`c_no`, `name_of_company`, `website`, `package`, `tenth_eligibility_percentage`, `twelth_eligibility_percentage`, `graduation_eligibility_percentage`, `created_at`, `updated_at`) VALUES
-('1', 'Google', 'www.google.com', '12.00', '70.00', '70.00', '70.00', '2023-05-05 01:05:52', '2023-05-05 01:05:52'),
-('2', 'Test Company', 'www.testcompany.com', '5.00', '60.00', '60.00', '60.00', '2023-05-05 01:06:11', '2023-05-05 01:06:11'),
-('3', 'AV Pvt Ltd', 'www.avcompanies.com', '20.00', '60.00', '60.00', '60.00', '2023-05-05 10:53:39', '2023-05-05 10:57:05');
+(1, 'Google', 'www.google.com', '12.00', '70.00', '70.00', '70.00', '2023-05-19 06:11:52', '2023-05-19 06:11:52'),
+(2, 'Test Company', 'www.testcompany.com', '5.00', '60.00', '60.00', '60.00', '2023-05-19 06:12:28', '2023-05-19 06:12:28'),
+(3, 'AV Pvt Ltd', 'www.avcompanies.com', '14.00', '60.00', '60.00', '60.00', '2023-05-19 06:12:57', '2023-05-19 06:12:57'),
+(4, 'ESparks', 'www.esparks.com', '5.00', '60.00', '60.00', '60.00', '2023-05-19 07:15:02', '2023-05-19 07:15:02'),
+(5, 'Test Company 2', 'www.testcompany2.com', '6.00', '60.00', '60.00', '60.00', '2023-05-22 02:06:46', '2023-05-22 02:06:46'),
+(6, 'GHL', 'www.ghl.com', '24.00', '70.00', '70.00', '70.00', '2023-05-22 05:40:07', '2023-05-22 05:40:07'),
+(7, 'Constructor', 'www.constructor.com', '6.00', '60.00', '60.00', '60.00', '2023-05-22 06:23:52', '2023-05-22 06:23:52'),
+(8, 'Chandana Pvt Ltd', 'www.cpvtltd.com', '8.00', '60.00', '60.00', '60.00', '2023-05-29 00:36:51', '2023-05-29 00:36:51'),
+(9, 'Test Company 3', 'www.testcompany3.com', '8.00', '65.00', '65.00', '65.00', '2023-06-03 13:30:31', '2023-06-03 13:30:31');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `companies_courses`
+--
+
+CREATE TABLE `companies_courses` (
+  `company_no` int(11) DEFAULT NULL,
+  `course_id` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `companies_courses`
+--
+
+INSERT INTO `companies_courses` (`company_no`, `course_id`, `created_at`, `updated_at`) VALUES
+(1, 1, NULL, NULL),
+(1, 2, NULL, NULL),
+(1, 3, NULL, NULL),
+(1, 4, NULL, NULL),
+(2, 3, NULL, NULL),
+(2, 4, NULL, NULL),
+(3, 5, NULL, NULL),
+(3, 6, NULL, NULL),
+(4, 1, NULL, NULL),
+(4, 2, NULL, NULL),
+(4, 3, NULL, NULL),
+(4, 4, NULL, NULL),
+(4, 5, NULL, NULL),
+(4, 6, NULL, NULL),
+(5, 1, NULL, NULL),
+(5, 2, NULL, NULL),
+(5, 3, NULL, NULL),
+(5, 4, NULL, NULL),
+(6, 1, NULL, NULL),
+(6, 2, NULL, NULL),
+(6, 3, NULL, NULL),
+(6, 4, NULL, NULL),
+(7, 5, NULL, NULL),
+(7, 6, NULL, NULL),
+(7, 8, NULL, NULL),
+(7, 2, NULL, NULL),
+(8, 6, NULL, NULL),
+(8, 2, NULL, NULL),
+(9, 1, NULL, NULL),
+(9, 2, NULL, NULL),
+(9, 3, NULL, NULL),
+(9, 4, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `companies_student`
+--
+
+CREATE TABLE `companies_student` (
+  `company_no` int(11) DEFAULT NULL,
+  `enrollment_no` bigint(20) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `companies_student`
+--
+
+INSERT INTO `companies_student` (`company_no`, `enrollment_no`, `created_at`, `updated_at`) VALUES
+(2, 32454532427645, NULL, NULL),
+(4, 32454532427645, NULL, NULL),
+(4, 54637589678543, NULL, NULL),
+(4, 1710701037, NULL, NULL),
+(1, 1710701037, NULL, NULL),
+(5, 1710701037, NULL, NULL),
+(1, 3564642624646, NULL, NULL),
+(2, 3564642624646, NULL, NULL),
+(4, 3564642624646, NULL, NULL),
+(7, 45637233423154, NULL, NULL),
+(5, 32454532427645, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `courses`
+--
+
+CREATE TABLE `courses` (
+  `course_id` int(11) NOT NULL,
+  `course_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`course_id`, `course_name`, `created_at`, `updated_at`) VALUES
+(1, 'btech', NULL, NULL),
+(2, 'mtech', NULL, NULL),
+(3, 'bca', NULL, NULL),
+(4, 'mca', NULL, NULL),
+(5, 'bba', NULL, NULL),
+(6, 'mba', NULL, NULL),
+(7, 'ba', '2023-05-21 05:43:13', '2023-05-21 05:43:13'),
+(8, 'ma', '2023-05-21 05:43:20', '2023-05-21 05:43:20');
 
 -- --------------------------------------------------------
 
@@ -102,13 +216,18 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(5, '2023_05_01_165717_create_student_table', 1),
-(6, '2023_05_02_045132_create_companies_table', 1),
-(7, '2023_05_02_051425_create_admin_table', 1);
+(12, '2023_05_18_114304_create_companycourses_table', 3),
+(86, '2023_05_19_063901_create_company_course_table', 4),
+(87, '2014_10_12_000000_create_users_table', 5),
+(88, '2014_10_12_100000_create_password_reset_tokens_table', 5),
+(89, '2019_08_19_000000_create_failed_jobs_table', 5),
+(90, '2019_12_14_000001_create_personal_access_tokens_table', 5),
+(91, '2023_05_01_165717_create_student_table', 5),
+(92, '2023_05_02_045132_create_companies_table', 5),
+(93, '2023_05_02_051425_create_admin_table', 5),
+(94, '2023_05_18_113449_create_courses_table', 5),
+(95, '2023_05_19_063901_create_companies_courses_table', 5),
+(97, '2023_05_22_053000_create_companies_student_table', 6);
 
 -- --------------------------------------------------------
 
@@ -168,11 +287,12 @@ CREATE TABLE `student` (
 --
 
 INSERT INTO `student` (`enrollment_no`, `student_name`, `email`, `contact_no`, `course`, `semester`, `section`, `tenth_percentage`, `twelth_percentage`, `graduation_percentage`, `password`, `created_at`, `updated_at`) VALUES
-(22112551981245, 'kiran kumar', 'kirankumarkks1432@gmail.com', '3243264324', 'mca', 2, 'D', '87.00', '67.40', '75.00', '$2y$10$kjs1VZB6GuegK8ccGn79MeTWLyN5WnQTfjxrv3xpN41uaCGRRPPfq', '2023-05-05 01:04:33', '2023-05-05 01:04:33'),
-(32454532427645, 'Abhinav Basu', 'abhinavbasu99@gmail.com', '9909333723', 'mca', 2, 'D', '87.40', '67.40', '80.00', '$2y$10$6qy/oTWpuCKKqE13qSNTauBftr08kIM9lVjsP038sGGVUNB9lr6t2', '2023-05-05 00:54:32', '2023-05-05 01:00:40'),
-(37362553645736, 'Faeez Memon', 'faeezmemon@gmail.com', '9377759285', 'mca', 2, 'D', '79.00', '74.00', '83.00', '$2y$10$VIc/T5J4GhubLwfJw5netevI9Pa3HeuWJOWonYFqFIF3ohGhR7Bda', '2023-05-06 02:05:55', '2023-05-06 02:05:55'),
-(45637233423154, 'Khushi Bharatbhai Gupta', 'khushibharatgupta2002@gmail.com', '7777777777', 'btech', 2, 'D', '80.00', '70.00', '83.31', '$2y$10$wbNDrw1R1meFuwcBMghf9OmYaTSQS0NicVLN3lh1qyeqtSH2Jfxhq', '2023-05-05 01:03:46', '2023-05-05 01:03:46'),
-(54637589678543, 'Bhavin V Prajapati', 'bhavinprajapati@gmail.com', '7847384463', 'mca', 2, 'D', '68.00', '60.00', '75.00', '$2y$10$NhGuLgamoulI6uAoqoxAbuhhXSUkqGr5mf8xxtBebbGLiRADf8Ud.', '2023-05-05 01:02:09', '2023-05-05 01:02:09');
+(1710701037, 'Prashant Singh Choudhary', 'prashant@gamil.com', '6987654345', 'btech', 8, 'A', '82.00', '74.50', '80.00', '$2y$10$bzlG8O.UcmkgO6nmYaSo2.xRLlKg7svPjMUfD.JJek9QlFYKNPa1y', '2023-05-22 05:36:09', '2023-05-22 05:36:09'),
+(3564642624646, 'Vandana Madhu', 'vandana@gmail.com', '9562302536', 'mca', 4, 'A', '78.00', '90.00', '85.00', '$2y$10$Gzg7WFRaK9TNWVUucplyFuae7JC31sCoOMiGGGUmXY4/j8mYpuMmC', '2023-05-22 06:20:32', '2023-05-22 06:21:12'),
+(22112551981245, 'Khushi Bharatbhai Gupta', 'khushibharatgupta2002@gmail.com', '3243264324', 'mca', 3, 'D', '80.00', '76.00', '83.31', '$2y$10$AXBY3uZw6RkEWZDxUM9um./fYFrWMzzowpJP8d1RxssbMeKAlSR9K', '2023-05-20 01:38:20', '2023-05-20 01:38:20'),
+(32454532427645, 'Abhinav Basu', 'abhinavbasu99@gmail.com', '9909333723', 'mca', 3, 'D', '87.40', '67.40', '80.00', '$2y$10$IZAO1DgbTYxa/A08W2vqs.gNyxMnyQP1nhaW7.EbgFqrRzQId.qp6', '2023-05-20 01:36:02', '2023-05-21 23:51:33'),
+(45637233423154, 'kiran kumar', 'kirankumarkks1432@gmail.com', '8905519839', 'mba', 3, 'D', '80.00', '70.00', '75.00', '$2y$10$KSqmV2tXrOlZIW/DGncy2upvn1MPAkPtDKG88W9Ii6VOe/3FCGHQ2', '2023-05-20 01:37:32', '2023-05-20 01:37:32'),
+(54637589678543, 'Bhavin V Prajapati', 'bhavinprajapati@gmail.com', '7847384463', 'btech', 3, 'D', '80.00', '60.00', '75.00', '$2y$10$y8NyIKU2bt1McYf2h8ibruISczPTICcBtghf/LfaEc052RGI.Zrd2', '2023-05-20 01:36:45', '2023-05-20 01:36:45');
 
 -- --------------------------------------------------------
 
@@ -206,6 +326,26 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `companies`
   ADD PRIMARY KEY (`c_no`);
+
+--
+-- Indexes for table `companies_courses`
+--
+ALTER TABLE `companies_courses`
+  ADD KEY `companies_courses_company_no_foreign` (`company_no`),
+  ADD KEY `companies_courses_course_id_foreign` (`course_id`);
+
+--
+-- Indexes for table `companies_student`
+--
+ALTER TABLE `companies_student`
+  ADD KEY `companies_student_company_no_foreign` (`company_no`),
+  ADD KEY `companies_student_enrollment_no_foreign` (`enrollment_no`);
+
+--
+-- Indexes for table `courses`
+--
+ALTER TABLE `courses`
+  ADD PRIMARY KEY (`course_id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -261,7 +401,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -274,6 +414,24 @@ ALTER TABLE `personal_access_tokens`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `companies_courses`
+--
+ALTER TABLE `companies_courses`
+  ADD CONSTRAINT `companies_courses_company_no_foreign` FOREIGN KEY (`company_no`) REFERENCES `companies` (`c_no`) ON DELETE CASCADE,
+  ADD CONSTRAINT `companies_courses_course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`course_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `companies_student`
+--
+ALTER TABLE `companies_student`
+  ADD CONSTRAINT `companies_student_company_no_foreign` FOREIGN KEY (`company_no`) REFERENCES `companies` (`c_no`) ON DELETE CASCADE,
+  ADD CONSTRAINT `companies_student_enrollment_no_foreign` FOREIGN KEY (`enrollment_no`) REFERENCES `student` (`enrollment_no`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -44,7 +44,7 @@
             <div class="inputs">
                 <div class="leftsideinputs">
                     <label for="c_no">Company Number</label>
-                    <input type="text" name="c_no" id="c_no" value="{{old('c_no')}}">
+                    <input type="text" name="c_no" id="c_no" value="{{$no_of_companies + 1}}">
                     <span class="error">
                         @error('c_no')
                         {{$message}}

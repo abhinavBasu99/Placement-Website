@@ -35,7 +35,7 @@
             <div class="inputs">
                 <div class="leftsideinputs">
                     <label for="a_no">Admin No.</label><br>
-                    <input type="text" name="a_no" id="a_no"><br>
+                    <input type="text" name="a_no" id="a_no" value="{{$no_of_admins + 1}}"><br>
                     <span class="error">
                         @error('a_no')
                         {{$message}}

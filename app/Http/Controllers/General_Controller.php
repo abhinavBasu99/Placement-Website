@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Exports\EligibleStudents;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\File;
 
 class General_Controller extends Controller{
     public function home(){
@@ -22,8 +23,15 @@ class General_Controller extends Controller{
 
         $filename = $id.'resume.pdf';
         $filepath = storage_path('app/public/resumes/'.$filename);
+        $filepresent = false;
 
-        return response()->download($filepath);
+        if(File::exists($filepath)){
+            $filepresent = true;
+        }
+        else{
+            echo "File not present";
+        }
+        // return response()->download($filepath);
     }
 }
 ?>

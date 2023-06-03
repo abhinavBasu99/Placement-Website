@@ -67,12 +67,11 @@
                 <div class="middleinputs">
                     <label for="course">Course</label>
                     <select name="course" id="course">
-                        <option value="btech">B Tech</option>
-                        <option value="mtech">M Tech</option>
-                        <option value="bca">BCA</option>
-                        <option value="mca">MCA</option>
-                        <option value="bba">BBA</option>
-                        <option value="mba">MBA</option>
+                    @foreach ($courses as $course)
+
+                        <option value="{{$course->course_name}}">{{$course->course_name}}</option>
+
+                    @endforeach
                     </select>
                     <label for="semester">Semester</label>
                     <input type="text" name="semester" id="semester" value="{{old('semester')}}">

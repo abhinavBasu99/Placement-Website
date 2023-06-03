@@ -170,3 +170,7 @@ h1 {
     transform: scale(1.2);
     cursor: pointer;
 }
+
+#resumenotuploaded {
+    color: rgb(215, 15, 15);
+}

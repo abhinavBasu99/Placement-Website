@@ -40,7 +40,11 @@
         </div>
         <div id="resume">
             <span>Resume:</span>
-            <a href="/downloadresume/{{$student->enrollment_no}}"><button id="downloadresumebutton">Download</button></a>
+            @if ($filepresent)
+                <a href="/downloadresume/{{$student->enrollment_no}}"><button id="downloadresumebutton">Download</button></a>
+                @else
+                    <p id="resumenotuploaded">Resume Not Uploaded</p>
+            @endif
             <form action="/student/uploadresume" method="post" enctype="multipart/form-data" id="uploadresumeform">
                 @csrf
                 <label for="resume">Change Resume:</label>

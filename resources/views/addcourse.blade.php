@@ -44,7 +44,7 @@
             <h1>Add Course</h1>
             <div class="inputs">
                 <label for="course_id">Course Id</label>
-                <input type="text" name="course_id" id="course_id">
+                <input type="text" name="course_id" id="course_id" value="{{$no_of_courses + 1}}">
                 <span class="error">
                     @error('course_id')
                     {{$message}}

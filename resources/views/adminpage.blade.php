@@ -70,9 +70,13 @@
                 <td>{{$student->section}}</td>
                 <td>{{$student->email}}</td>
                 <td>{{$student->contact_no}}</td>
-                <td>
-                    <a href="/downloadresume/{{$student->enrollment_no}}"><button id="downloadresumebutton">Download</button></a>
-                </td>
+                @if ($student->filepresent)
+                    <td>
+                        <a href="/downloadresume/{{$student->enrollment_no}}"><button id="downloadresumebutton">Download</button></a>
+                    </td>
+                    @else
+                        <td id="resumenotuploaded">Resume Not Uploaded</td>
+                @endif
             </tr>
             @endforeach
         </table>

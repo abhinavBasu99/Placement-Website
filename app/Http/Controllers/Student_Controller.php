@@ -13,11 +13,14 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Exports\EligibleStudents;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\File;
 
 class Student_Controller extends Controller
 {
     public function studentregister(){
-        return view('studentregister');
+        $courses = Courses::all();
+        $data = compact('courses');
+        return view('studentregister')->with($data);
     }
 
     public function submitstudentregister(Request $request){
@@ -103,7 +106,15 @@ class Student_Controller extends Controller
             }
         }
 
-        $data = compact('eligiblecompanies', 'student');
+        $filename = $enrollment_no.'resume.pdf';
+        $filepath = storage_path('app/public/resumes/'.$filename);
+        $filepresent = false;
+
+        if(File::exists($filepath)){
+            $filepresent = true;
+        }
+
+        $data = compact('eligiblecompanies', 'student', 'filepresent');
 
         return view('studentpage')->with($data);
     }
